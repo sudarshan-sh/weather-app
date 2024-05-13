@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { Card } from "react-bootstrap";
 import { BsFillSunFill } from "react-icons/bs";

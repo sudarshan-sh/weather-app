@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import { Card, Col, Row } from "react-bootstrap";
 import "./App.css";
 import LeftSideWeather from "./components/LeftSideWeather";
@@ -12,8 +14,6 @@ const clientID = process.env.REACT_APP_CLIENT_ID;
 
 function App() {
   const [fetchWeatherData, setFetchWeatherData] = useState({});
-  const [locLatitude, setLocLatitude] = useState("40.712776");
-  const [locLongitude, setLocLongitude] = useState("-74.005974");
   const initialCity = "New York"; // Set initial city
   const [cityName, setCityName] = useState(initialCity);
   const [searchPlace, setSearchPlace] = useState("");
