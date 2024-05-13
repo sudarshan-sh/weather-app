@@ -118,3 +118,7 @@
 .weather-temp p:nth-child(2) {
   color: darkgray;
 }
+#gauge-chart1 svg {
+  max-width: 100%;
+  height: auto;
+}
