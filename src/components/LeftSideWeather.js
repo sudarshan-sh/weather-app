@@ -125,7 +125,7 @@ const LeftSideWeather = ({
                   ? tempInCelsius.toFixed(2) + "°C"
                   : tempInFahrenheit.toFixed(2) + "°F"} */}
                 {isTempInCelsius
-                  ? dailyData?.temp?.day.toFixed(2) - 273.15 + "°C"
+                  ? (dailyData?.temp?.day - 273.15).toFixed(2) + "°C"
                   : ((dailyData?.temp?.day * 9) / 5 + 32).toFixed(2) + "°F"}
               </h1>
               <span className="d-flex">
