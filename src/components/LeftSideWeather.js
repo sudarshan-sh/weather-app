@@ -123,12 +123,10 @@ const LeftSideWeather = ({
           {filteredDailyData?.map((dailyData) => (
             <div>
               <h1>
-                {/* {isTempInCelsius
-                  ? tempInCelsius.toFixed(2) + "°C"
-                  : tempInFahrenheit.toFixed(2) + "°F"} */}
                 {isTempInCelsius
                   ? (dailyData?.temp?.day - 273.15).toFixed(2) + "°C"
-                  : ((dailyData?.temp?.day * 9) / 5 + 32).toFixed(2) + "°F"}
+                  : ((dailyData?.temp?.day - 273.15) * 1.8 + 32).toFixed(2) +
+                    "°F"}
               </h1>
               <span className="d-flex">
                 <p>{toDay}</p>,&nbsp;
