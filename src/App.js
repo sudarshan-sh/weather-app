@@ -98,7 +98,7 @@ function App() {
       <Card className="main-card">
         <div>
           <Row className="p-3">
-            <Col md={4} style={{ background: "#fff" }}>
+            <Col md={4} xl={3} style={{ background: "#fff" }}>
               <LeftSideWeather
                 fetchWeatherData={fetchWeatherData}
                 searchPlace={searchPlace}
@@ -109,7 +109,7 @@ function App() {
               />
             </Col>
             <Col
-              md={8}
+              md={8} xl={9}
               style={{ background: "rgb(247, 245, 245)" }}
               className="m-0"
             >
