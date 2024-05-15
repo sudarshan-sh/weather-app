@@ -6,7 +6,7 @@
   /* flex-direction: row; */
   border: 0.25px solid lightgray;
   border-radius: 20px;
-  margin: 3rem 4rem;
+  margin: 3rem 1rem;
 }
 
 .App-logo {
@@ -77,10 +77,19 @@
 }
 
 /* RIGHT PART */
-.header-right {
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
+@media screen and (max-width: 450px) {
+  .header-right {
+    padding: 1rem 2rem;
+    /* display: flex; */
+    justify-content: space-between;
+  }
+}
+@media screen and (min-width: 450px) {
+  .header-right {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 .degree-btn {
   border-radius: 20px;
@@ -95,13 +104,14 @@
 
 .day-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(6rem, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 1fr));
   padding: 1rem 2rem;
   gap: 1rem;
 }
 .day-weather-card {
   border-radius: 20px;
   border: none;
+  padding: 1rem;
 }
 .day-weather-card .weather-img {
   width: 50px;
@@ -121,4 +131,12 @@
 #gauge-chart1 svg {
   max-width: 100%;
   height: auto;
+}
+
+@media screen and (min-width: 400px) and (max-width: 768px) {
+  .left_weather_info {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+  }
 }

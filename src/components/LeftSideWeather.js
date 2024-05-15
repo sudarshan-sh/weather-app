@@ -137,15 +137,19 @@ const LeftSideWeather = ({
           ))}
         </div>
         <hr style={{ color: "darkgrey" }} />
-        <div className="left-weather-info">
-          <span className="d-flex align-items-center gap-2">
-            <IoIosCloudOutline />
-            <p className="m-0">{current?.weather[0]?.description}</p>
-          </span>
-          <span className="d-flex align-items-center gap-2">
-            <FaCloudRain />
-            <p className="m-0">{current?.weather[0]?.main}</p>
-          </span>
+        <div
+        // className="left-weather-info"
+        >
+          <div className="left_weather_info">
+            <span className="d-flex align-items-center gap-2">
+              <IoIosCloudOutline />
+              <p className="m-0">{current?.weather[0]?.description}</p>
+            </span>
+            <span className="d-flex align-items-center gap-2">
+              <FaCloudRain />
+              <p className="m-0">{current?.weather[0]?.main}</p>
+            </span>
+          </div>
           <div className="p-3" style={{ position: "relative" }}>
             <img
               src={fetchImageDetails[0]?.urls.small}
@@ -159,6 +163,7 @@ const LeftSideWeather = ({
                 left: 0,
                 maxWidth: "250px",
                 maxHeight: "220px",
+                objectFit: "cover",
               }}
             />
             <p
