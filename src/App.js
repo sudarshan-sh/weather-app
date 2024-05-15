@@ -11,6 +11,7 @@ const endpoint = process.env.REACT_APP_SERVICE_URI;
 const apiKey = process.env.REACT_APP_API_KEY;
 const photosAPI = process.env.REACT_APP_PHOTOS_URI;
 const clientID = process.env.REACT_APP_CLIENT_ID;
+const endpointMain = process.env.REACT_APP_MAIN_API_ENDPOINT;
 
 function App() {
   const [fetchWeatherData, setFetchWeatherData] = useState({});
@@ -75,7 +76,7 @@ function App() {
   }, [searchPlace]);
 
   const fetchCityData = async (cityName) => {
-    const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${apiKey}`;
+    const url = `${endpointMain}?q=${cityName}&limit=5&appid=${apiKey}`;
     const response = await axios.get(url);
     return response.data;
   };
