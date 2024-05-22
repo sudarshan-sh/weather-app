@@ -16,7 +16,6 @@ const RightWeatherInfo = ({
   setIsTempInCelsius,
   isTempInCelsius,
   isLoading,
-  setIsLoading,
 }) => {
   const { current, daily } = fetchWeatherData;
 

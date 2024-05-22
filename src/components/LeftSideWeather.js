@@ -27,7 +27,6 @@ const LeftSideWeather = ({
   fetchImageDetails,
   isTempInCelsius,
   isLoading,
-  setIsLoading,
 }) => {
   const [filteredDailyData, setFilteredDailyData] = useState([]);
   const { current } = fetchWeatherData;
