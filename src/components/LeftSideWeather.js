@@ -7,6 +7,7 @@ import { FaCloudRain } from "react-icons/fa";
 import imageOvercastClouds from "../images/weekImages/clouds.png";
 import clearImg from "../images/weekImages/clear.png";
 import imageModerateRain from "../images/weekImages/rain.png";
+import { Spinner } from "react-bootstrap";
 
 const weekday = [
   "Sunday",
@@ -25,6 +26,8 @@ const LeftSideWeather = ({
   cityName,
   fetchImageDetails,
   isTempInCelsius,
+  isLoading,
+  setIsLoading,
 }) => {
   const [filteredDailyData, setFilteredDailyData] = useState([]);
   const { current } = fetchWeatherData;
@@ -117,7 +120,15 @@ const LeftSideWeather = ({
             onChange={(e) => onSetSearchPlace(e.target.value)}
           />
           {/* <img src={sunWeatherImg} alt="sun-weather" /> */}
-          <WeatherIcon weatherIcon={current?.weather[0]?.icon} />
+          {isLoading ? (
+            <div>
+              <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </div>
+          ) : (
+            <WeatherIcon weatherIcon={current?.weather[0]?.icon} />
+          )}
         </div>
         <div className="left-weather-info">
           {filteredDailyData?.map((dailyData) => (
@@ -137,48 +148,55 @@ const LeftSideWeather = ({
           ))}
         </div>
         <hr style={{ color: "darkgrey" }} />
-        <div
-        // className="left-weather-info"
-        >
-          <div className="left_weather_info">
-            <span className="d-flex align-items-center gap-2">
-              <IoIosCloudOutline />
-              <p className="m-0">{current?.weather[0]?.description}</p>
-            </span>
-            <span className="d-flex align-items-center gap-2">
-              <FaCloudRain />
-              <p className="m-0">{current?.weather[0]?.main}</p>
-            </span>
+
+        {isLoading ? (
+          <div>
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
           </div>
-          <div className="p-3" style={{ position: "relative" }}>
-            <img
-              src={fetchImageDetails[0]?.urls.small}
-              alt="sun-weather"
-              style={{
-                borderRadius: "20px",
-                height: "auto",
-                width: "100%",
-                position: "relative",
-                top: 0,
-                left: 0,
-                maxWidth: "250px",
-                maxHeight: "220px",
-                objectFit: "cover",
-              }}
-            />
-            <p
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                color: "white",
-              }}
-            >
-              {searchPlace || cityName}
-            </p>
+        ) : (
+          <div>
+            <div className="left_weather_info">
+              <span className="d-flex align-items-center gap-2">
+                <IoIosCloudOutline />
+                <p className="m-0">{current?.weather[0]?.description}</p>
+              </span>
+              <span className="d-flex align-items-center gap-2">
+                <FaCloudRain />
+                <p className="m-0">{current?.weather[0]?.main}</p>
+              </span>
+            </div>
+            <div className="p-3" style={{ position: "relative" }}>
+              <img
+                src={fetchImageDetails[0]?.urls.small}
+                alt="sun-weather"
+                style={{
+                  borderRadius: "20px",
+                  height: "auto",
+                  width: "100%",
+                  position: "relative",
+                  top: 0,
+                  left: 0,
+                  maxWidth: "250px",
+                  maxHeight: "220px",
+                  objectFit: "cover",
+                }}
+              />
+              <p
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  color: "white",
+                }}
+              >
+                {searchPlace || cityName}
+              </p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

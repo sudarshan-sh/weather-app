@@ -21,6 +21,7 @@ function App() {
   const [placePhoto, setPlacePhoto] = useState(null);
   const [fetchImageDetails, setFetchImageDetails] = useState([]);
   const [isTempInCelsius, setIsTempInCelsius] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   var dateFormat = new Date();
   // Get year, month, and day part from the date
@@ -32,6 +33,7 @@ function App() {
   var formattedDate = year + "-" + month + "-" + day;
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchData = async () => {
       try {
         // Step 1: Fetch latitude and longitude of a city
@@ -40,6 +42,7 @@ function App() {
         // Step 2: Fetch weather data using obtained latitude and longitude
         const weatherData = await fetchWeatherData1(lat, lon);
         setFetchWeatherData(weatherData);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -48,6 +51,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchData = async () => {
       try {
         let cityToFetch = searchPlace;
@@ -68,6 +72,7 @@ function App() {
         // Step 3: Fetch image data using search place
         const imageData = await fetchImageData(cityToFetch);
         setFetchImageDetails(imageData?.results);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -106,10 +111,13 @@ function App() {
                 cityName={cityName}
                 fetchImageDetails={fetchImageDetails}
                 isTempInCelsius={isTempInCelsius}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
               />
             </Col>
             <Col
-              md={8} xl={9}
+              md={8}
+              xl={9}
               style={{ background: "rgb(247, 245, 245)" }}
               className="m-0"
             >
@@ -117,6 +125,8 @@ function App() {
                 fetchWeatherData={fetchWeatherData}
                 setIsTempInCelsius={setIsTempInCelsius}
                 isTempInCelsius={isTempInCelsius}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
               />
             </Col>
           </Row>
